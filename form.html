@@ -1,42 +1,168 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Halaman Form</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Account Management Form</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    textarea::-webkit-scrollbar {
+      width: 6px;
+    }
+    textarea::-webkit-scrollbar-thumb {
+      background-color: #3b82f6;
+      border-radius: 3px;
+    }
+    .profile-img-container {
+      position: relative;
+      width: 140px;
+      height: 140px;
+      border-radius: 0.75rem;
+      overflow: hidden;
+      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+    }
+    .close-btn {
+      position: absolute;
+      top: 6px;
+      right: 6px;
+      background: rgba(0,0,0,0.5);
+      color: white;
+      border-radius: 9999px;
+      width: 24px;
+      height: 24px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 16px;
+      transition: background 0.2s ease;
+    }
+    .close-btn:hover {
+      background: rgba(0,0,0,0.8);
+    }
+  </style>
 </head>
-<body>
-    <h1>Form Data Diri</h1>
-    <hr>
-    <div>
-        <form action="submit">
-            <label for="nama">Nama :</label>
-            <input type="text" name="nama" id="nama">
-            <br><br>
-            <label for="no.hp">No.HP :</label>
-            <input type="number" name="no.hp" id="no.hp">
-            <br><br>
-            <label for="jeni kelamain">Jenis Kelamin</label>
-            <input type="radio" name="jenis_kelamin" id="pria"><label for="pria">Pria</label>
-            <input type="radio" name="jenis_kelamin" id="wanita"><label for="wanita">Wanita</label>
-            <br><br>
-            <label for="hobby">Hobi</label>
-            <input type="checkbox" name="sepakbola" id="sepakbola"><label for="sepakbola">Sepak Bola</label>
-            <input type="checkbox" name="coding" id="coding"><label for="coding">Coding</label>
-            <input type="checkbox" name="joging" id="joging"><label for="joging">Joging</label>
-            <br><br>
-            <label for="lulusan">Pendidikan Terakhir</label>
-            <select name="lulusan" id="lulusan">
-                <option value="sma">SMA</option>
-                <option value="smk">SMK</option>
-                <option value="s1">S1</option>
-                <option value="s2">S2</option>
-                <option value="s3">S3</option>
-            </select>
-            <br><br>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center p-6">
+  <main class="max-w-5xl w-full bg-white rounded-xl shadow-lg p-8 grid grid-cols-1 md:grid-cols-2 gap-12">
 
-            <button type="submit">Kirim</button>
-        </form>
-    </div>
+    <section>
+      <h2 class="text-lg font-semibold mb-6">Akun Profil</h2>
+      <hr><br>
+      <div class="flex flex-col items-center mb-6">
+        <div class="profile-img-container mb-4">
+          <img 
+            src="image/IMG_20241127_075000.jpg" 
+            alt="Profile photo of a person in dark clothes with a night city skyline behind" 
+            class="w-full h-full object-cover"/>
+          <button class="close-btn" title="Remove photo" aria-label="Remove photo" onclick="alert('Remove photo clicked')">&times;</button>
+        </div>
+        <input 
+          type="file" 
+          class="mt-1 px-4 py-2 rounded-md border border-green-300 text-green-700 hover:bg-green-50 transition">
+      </div>
+      <form class="space-y-4">
+        <div>
+          <label for="oldPassword" class="block mb-1 text-gray-700 font-medium">Old Password</label>
+          <input type="password" id="oldPassword" name="oldPassword" placeholder="********" 
+            class="w-full rounded-md border border-gray-300 px-3 py-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400" />
+        </div>
+        <div>
+          <label for="newPassword" class="block mb-1 text-gray-700 font-medium">New Password</label>
+          <input type="password" id="newPassword" name="newPassword" placeholder="********" 
+            class="w-full rounded-md border border-gray-300 px-3 py-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400" />
+        </div>
+        <button 
+          type="submit" 
+          class="w-full mt-2 py-2 rounded-md border border-green-500 text-green-600 font-semibold hover:bg-green-50 transition">
+          Change Password
+        </button>
+      </form>
+    </section>
+
+    <section>
+      <h2 class="text-lg font-semibold mb-6">Informasi Profil</h2><hr>
+      <form class="space-y-6" onsubmit="event.preventDefault(); alert('Profile updated');">
+        <div class="grid grid-cols-2 gap-6">
+          <div>
+            <label for="username" class="block mb-1 text-gray-600 text-sm">Username</label>
+            <input type="text" id="username" name="username" value="Devano Muhammad"
+              class="w-full rounded-md border border-gray-300 px-3 py-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400" />
+          </div>
+          <div>
+            <label for="firstName" class="block mb-1 text-gray-600 text-sm">First Name</label>
+            <input type="text" id="firstName" name="firstName" value="Devano"
+              class="w-full rounded-md border border-gray-300 px-3 py-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400" />
+          </div>
+          <div>
+            <label for="nickname" class="block mb-1 text-gray-600 text-sm">Nickname</label>
+            <input type="text" id="nickname" name="nickname" value="madevano72"
+              class="w-full rounded-md border border-gray-300 px-3 py-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400" />
+          </div>
+          <div>
+            <label for="role" class="block mb-1 text-gray-600 text-sm">Role</label>
+            <select id="role" name="role" class="w-full rounded-md border border-gray-300 px-3 py-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400">
+              <option selected>Programmer</option>
+              <option>Designer</option>
+              <option>Manager</option>
+              <option>QA</option>
+            </select>
+          </div>
+          <div>
+            <label for="lastName" class="block mb-1 text-gray-600 text-sm">Last Name</label>
+            <input type="text" id="lastName" name="lastName" value="Muhammad"
+              class="w-full rounded-md border border-gray-300 px-3 py-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400" />
+          </div>
+          <div>
+            <label for="displayName" class="block mb-1 text-gray-600 text-sm">Display Name Publicly as</label>
+            <input type="text" id="displayName" name="displayName" value="madevano"
+              class="w-full rounded-md border border-gray-300 px-3 py-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400" />
+          </div>
+        </div>
+
+        <fieldset class="border-t border-gray-200 pt-6">
+          <legend class="text-gray-700 font-semibold mb-4">Info Kontak</legend>
+          <div class="grid grid-cols-2 gap-6">
+            <div>
+              <label for="email" class="block mb-1 text-gray-600 text-sm">Email (required)</label>
+              <input type="email" id="email" name="email" required  value="masfadevano72@gmail.com"
+                class="w-full rounded-md border border-gray-300 px-3 py-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400" />
+            </div>
+            <div>
+              <label for="whatsapp" class="block mb-1 text-gray-600 text-sm">WhatsApp</label>
+              <input type="tel" id="whatsapp" name="whatsapp" value="088212345678"
+                class="w-full rounded-md border border-gray-300 px-3 py-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400" />
+            </div>
+            <div>
+              <label for="instagram" class="block mb-1 text-gray-600 text-sm">Instagram</label>
+              <input type="text" id="instagram" name="instagram" value="m.a.devano"
+                class="w-full rounded-md border border-gray-300 px-3 py-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400" />
+            </div>
+            <div>
+              <label for="telegram" class="block mb-1 text-gray-600 text-sm">Telegram</label>
+              <input type="tel" id="telegram" name="telegram" value="088123456789"
+                class="w-full rounded-md border border-gray-300 px-3 py-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400" />
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset class="border-t border-gray-200 pt-6">
+          <legend class="text-gray-700 font-semibold mb-4">Tentang saya</legend>
+          <div>
+            <label for="bio" class="block mb-1 text-gray-600 text-sm">Biographical Info</label>
+            <textarea id="bio" name="bio" rows="4" 
+              class="w-full rounded-md border border-gray-300 px-3 py-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400 resize-y">Football is my life.</textarea>
+          </div>
+        </fieldset>
+
+        <button 
+          type="submit" 
+          class="mt-6 w-full bg-green-600 text-white font-semibold py-2 rounded-md hover:bg-green-700 transition">
+          Save Profile
+        </button>
+      </form>
+    </section>
+  </main>
 </body>
 </html>
+
